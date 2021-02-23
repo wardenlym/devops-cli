@@ -1,0 +1,31 @@
+name: Build
+on:
+  push:
+
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Go
+      uses: actions/setup-go@master
+      with:
+        go-version: 1.16
+      id: go
+
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build
+      run: go build .
+
+    # - name: Create Release
+    #   uses: actions/create-release@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    #   with:
+    #     tag_name: ${{ github.ref }}
+    #     release_name: ${{ github.ref }}
+    #     draft: false
+    #     prerelease: false
