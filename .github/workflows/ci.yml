@@ -1,6 +1,5 @@
 name: GitHub Actions Build and Deploy Demo
-on:
-  push:
+on: [push, pull_request]
 
 jobs:
   build-and-deploy:
@@ -17,3 +16,17 @@ jobs:
 
     - name: Build
       run: go build .
+
+    - name: Get version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        tag_name: ${{ steps.get_version.outputs.VERSION }}
+        release_name: ${{ steps.get_version.outputs.VERSION }}
+        draft: false
+        prerelease: false
