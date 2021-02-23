@@ -1,0 +1,21 @@
+name: Build
+on:
+  push:
+
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Go
+      uses: actions/setup-go@master
+      with:
+        go-version: 1.16
+      id: go
+
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build
+      run: go build .
