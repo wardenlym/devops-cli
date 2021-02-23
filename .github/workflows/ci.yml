@@ -1,0 +1,19 @@
+name: GitHub Actions Build and Deploy Demo
+on:
+  push:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Go
+      uses: actions/setup-go@master
+      with:
+        go-version: 1.16
+      id: go
+
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build
+      runs: go build .
