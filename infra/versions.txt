@@ -1,0 +1,13 @@
+ubuntu 18.04
+docker v19.03
+kubernetes v1.19.7
+rke v1.2.5
+rancher v2.5.5
+cri-tools v1.19.0
+podman v3.0.0
+terraform v0.14.7
+hcloud v2.1.6
+packer
+kvm
+harbor
+ansible
