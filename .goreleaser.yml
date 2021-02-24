@@ -13,7 +13,10 @@ builds:
       - amd64
     mod_timestamp: '{{ .CommitTimestamp }}'
 archives:
-- format: binary
+  - 
+    files:
+      - none*
+
 
 checksum:
   name_template: 'checksums.txt'
